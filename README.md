@@ -27,6 +27,8 @@ To communicate with the attacker secretly, we use a covert channel through Twitt
 
 ## Instructions on running the keylogger manually
 
+Note: Script/api variables need to be updated to point to your twitter keys.
+
 With the new update no hardcoded memory is needed
 
 Run makefile.
