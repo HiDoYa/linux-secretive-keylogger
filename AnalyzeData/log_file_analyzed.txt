@@ -1,0 +1,28 @@
+###1:possible email address related data:
+
+namchen@ucdavis.edu
+afd asdfasdfasdf qwa
+
+namchen@ucdavis.edu
+lenchen1023
+asdfasd 
+
+###2:possible credit card number related data:
+
+4833160191986177
+322
+990
+
+###3: possible living address related data:
+
+31wek cq
+208 muir st woodland
+ca 95695
+5303026468
+
+###4:possible connection login related data:
+
+ssh nan1997@pc42.cs.ucdavis.edu
+lenchen1023!)@#
+yh
+
