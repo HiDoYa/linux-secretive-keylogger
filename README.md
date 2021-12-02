@@ -61,3 +61,9 @@ Tweets are published to: [Link](https://twitter.com/Lemon12776532)
 
 ## Credits
 This project was created by Hiroya Gojo (myself), Marco Brian, Nan Chen, and Shuyao Li for a Computer Security project at UC Davis.
+
+### Some Resources: 
+- http://redgetan.cc/lets-write-a-kernel-keylogger/
+- https://github.com/jarun/keysniffer/
+- https://www.win.tue.nl/~aeb/linux/kbd/scancodes-1.html
+- http://www.quadibloc.com/comp/scan.htm
