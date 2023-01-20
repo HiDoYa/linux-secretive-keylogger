@@ -13,11 +13,11 @@ Then, we have several directories for the other tools surrounding the keylogger.
 
 ### Text analysis
 
-The Analysis directory contains the tool to filter out useless keystrokes and obtain useful information from the keylogged files. Such as credit card info and user information. 
+The analyzer directory contains the tool to filter out useless keystrokes and obtain useful information from the keylogged files. Such as credit card info and user information. 
 
 ### Twitter bot and scheduler
 
-The source code can be found in Scripts folder. The client_script performs scheduling, encrypting messages, stenographize image and sending it through Twitter. Contains server_script for the attacker to receive back the information. Contains configuration file for changing some other important values (GET URL, API keys, schedule time). The idea so that we can apply different twitter users too for different infected computers. 
+The source code can be found in tweeter folder. The client_script performs scheduling, encrypting messages, stenographize image and sending it through Twitter. Contains server_script for the attacker to receive back the information. Contains configuration file for changing some other important values (GET URL, API keys, schedule time). The idea so that we can apply different twitter users too for different infected computers. 
 
 ## Keylogger and Covert Channel Explanation
 

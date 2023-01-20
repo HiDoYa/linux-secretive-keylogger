@@ -55,19 +55,19 @@ def get_image_metadata():
 
 
 def get_image():
-    image_set = get_image_metadata()
+    image_metadata_set = get_image_metadata()
     image_size = int(config["IMAGE_SIZE"])
     # filter for correct image size
-    new_image_set = []
-    for image in image_set:
-        if image["height"] >= image_size and image["width"] >= image_size:
-            new_image_set.append(image)
+    image_set = []
+    for image_metadata in image_metadata_set:
+        if image_metadata["height"] >= image_size and image_metadata["width"] >= image_size:
+            image_set.append(image_metadata)
 
-    if len(new_image_set) == 0:
+    if len(image_set) == 0:
         raise Exception
 
-    image = random.choice(new_image_set)
-    image_url = image["url"]
+    image_metadata = random.choice(image_set)
+    image_url = image_metadata["url"]
 
     response = requests.get(image_url)
     if response.status_code != 200:
@@ -133,14 +133,15 @@ def send_stego_tweet():
 
     """
     image_name = "test_image"
-    image_path = "./{}.png".format(image_name)
-    new_image_path = "./{}_new.png".format(image_name)
+    image_path = f"./{image_name}.png"
+    new_image_path = f"./{image_name}_new.png"
 
     jpg_img = get_image()
-    ImageSize = int(config["IMAGE_SIZE"])
-    jpg_img = jpg_img.resize((ImageSize, ImageSize))
+    image_size = int(config["IMAGE_SIZE"])
+    jpg_img = jpg_img.resize((image_size, image_size))
     jpg_img.save(image_path)
     png_img = PIL.Image.open(image_path)
+
     width, height = png_img.size
     image_text_storage = (width * height) // 3  # number of ASCII character that is storable
 
@@ -192,10 +193,7 @@ def check_analyzed_log_file():
 
     analysed_file_size = os.stat("log_file_analyzed.txt").st_size
 
-    if analysed_file_size > EXPECTED_SIZE_ANALYSED_LOGFILE:
-        return True
-    else:
-        return False
+    return analysed_file_size > EXPECTED_SIZE_ANALYSED_LOGFILE
 
 
 # returns a dictionary key value pair

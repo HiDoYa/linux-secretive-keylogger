@@ -6,20 +6,18 @@ import PIL
 import requests
 
 # reveal hidden message from image
-def destenographize_image(ImagePath):
-    revealedMessage = lsb.reveal(ImagePath)
+def destenographize_image(image_path):
+    message = lsb.reveal(image_path)
     # remove b'' strings from message
-    revealedMessage = revealedMessage[2 : len(revealedMessage) - 1]
-    return revealedMessage
+    message = message[2:]
+    return message
 
 
 def decrypt(password, encrypted_file, logged_file):
     enc_scheme = "-aes-128-cbc"
     opts = "-d -a -A -nosalt"
     openssl_cmd = (
-        "openssl enc -pass pass:{} {} {} -in {} -out {} -nosalt 2> /dev/null ".format(
-            password, enc_scheme, opts, encrypted_file, logged_file
-        )
+        f"openssl enc -pass pass:{password} {enc_scheme} {opts} -in {encrypted_file} -out {logged_file} -nosalt 2> /dev/null "
     )
 
     try:
@@ -36,13 +34,13 @@ def setup_dir():
 
 # Delete temp files
 def cleanup(files):
-    for eaFile in files:
-        if os.path.exists(eaFile):
-            os.remove(eaFile)
+    for file in files:
+        if os.path.exists(file):
+            os.remove(file)
 
 
 # tweet image
-def tweetSetup():
+def tweet_setup():
     consumer_key = config["TWITTER_CONSUMER_KEY"]
     consumer_key_secret = config["TWITTER_CONSUMER_KEY_SECRET"]
     access_token = config["TWITTER_ACCESS_TOKEN"]
@@ -91,7 +89,7 @@ def main():
     data_path = "./data/{}.txt"
     password = config["AES_PASSWORD"]
 
-    tw_api = tweetSetup()
+    tw_api = tweet_setup()
     new_tweets = get_tweets(tw_api, image_path, data_path)
 
     tweet_ids = new_tweets[0]
@@ -103,8 +101,8 @@ def main():
 
         # Save image from url
         image = requests.get(tweet_media)
-        cur_image_path = image_path.format(tweet_id)
-        PIL.Image.open(BytesIO(image.content)).save(cur_image_path)
+        image_path = image_path.format(tweet_id)
+        PIL.Image.open(BytesIO(image.content)).save(image_path)
 
         # Data file paths
         logged_file = data_path.format(tweet_id)
@@ -112,13 +110,12 @@ def main():
 
         # Save message to file
         try:
-            enc_message = destenographize_image(cur_image_path)
+            encrypted_message = destenographize_image(image_path)
         except Exception:
             continue
 
-        file_enc = open(encrypted_file, "w")
-        file_enc.write(enc_message)
-        file_enc.close()
+        with open(encrypted_file, "w") as file_encrypted:
+            file_encrypted.write(encrypted_message)
 
         # Decrypt
         decrypt(password, encrypted_file, logged_file)

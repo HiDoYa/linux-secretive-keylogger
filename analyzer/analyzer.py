@@ -42,25 +42,29 @@ def look_for_ssh_pass(text):
 
     return captured_strs
 
-with open("log_file.txt", "r") as f:
-    text = f.read()
 
-result = f"""
-Emails:
-{look_for_email(text)}
+def main():
+    with open("log_file.txt", "r") as f:
+        text = f.read()
 
-Credit cards:
-{look_for_cc_card_num(text)}
+    result = f"""
+    Emails:
+    {look_for_email(text)}
 
-Address:
-{look_for_address(text)}
+    Credit cards:
+    {look_for_cc_card_num(text)}
 
-Phone number:
-{look_for_phone_number(text)}
+    Address:
+    {look_for_address(text)}
 
-SSH Pass:
-{look_for_ssh_pass(text)}
-"""
+    Phone number:
+    {look_for_phone_number(text)}
 
-with open("log_file_analyzed.txt", "w") as f:
-    f.write(result)
+    SSH Pass:
+    {look_for_ssh_pass(text)}
+    """
+
+    with open("log_file_analyzed.txt", "w") as f:
+        f.write(result)
+
+main()
