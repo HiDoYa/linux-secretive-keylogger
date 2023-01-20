@@ -1,1 +1,4 @@
 config_bk
+.vscode
+*.o
+*.out

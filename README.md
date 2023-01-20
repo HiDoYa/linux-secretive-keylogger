@@ -60,7 +60,7 @@ The logged file will then be encrypted and decrypted with:
 Tweets are published to: [Link](https://twitter.com/Lemon12776532)
 
 ## Credits
-This project was created by Hiroya Gojo (myself), Marco Brian, Nan Chen, and Shuyao Li for a Computer Security project at UC Davis.
+This project was initially created by Hiroya Gojo (myself), Marco Brian, Nan Chen, and Shuyao Li. I continued to work on this afterwards.
 
 ### Some Resources: 
 - http://redgetan.cc/lets-write-a-kernel-keylogger/

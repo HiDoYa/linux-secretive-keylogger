@@ -14,5 +14,5 @@ clean:
 install:	
 	make -C $(KERNELDIR) M=$(PWD) modules_install
 
-quickInstall:
+quick_install:
 	cp $(MODULES) /lib/modules/`uname -r`/extra

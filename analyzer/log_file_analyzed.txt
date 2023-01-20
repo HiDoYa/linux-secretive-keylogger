@@ -1,0 +1,15 @@
+
+Emails:
+['namchen@ucdavis.edu', 'namchen@ucdavis.edu', 'nan1997@pc42.cs.ucdavis.edu']
+
+Credit cards:
+['4833160191986177']
+
+Address:
+[]
+
+Phone number:
+['2934109231', '5303026468']
+
+SSH Pass:
+[['ssh nan1997@pc42.cs.ucdavis.edu', 'lenchen1023!)@#']]
