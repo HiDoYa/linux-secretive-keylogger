@@ -31,6 +31,10 @@ Note: Script/api variables need to be updated to point to your twitter keys.
 
 With the new update no hardcoded memory is needed
 
+Install dependencies.
+
+`$ sudo apt-get install linux-headers-${uname -r}`
+
 Run makefile.
 
 `$ make`
